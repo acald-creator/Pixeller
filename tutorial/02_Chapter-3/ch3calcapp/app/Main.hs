@@ -17,4 +17,4 @@ main = runInputT defaultSettings loop
       minput <- getInputLine "Repl> "
       case minput of
         Nothing -> outputStrLn "Goodbye."
-        Jut input -> (liftIO $ process input) >> loop
+        Just input -> (liftIO $ process input) >> loop
