@@ -1,3 +1,4 @@
+{-@ LIQUID "--no-termination" @-}
 module Parser where
 
 import Syntax
