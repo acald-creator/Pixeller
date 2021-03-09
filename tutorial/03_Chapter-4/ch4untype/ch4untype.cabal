@@ -35,7 +35,7 @@ executable ch4untype
     , haskeline     >=0.7
     , mtl
     , parsec        ^>=3.1
-    , pretty        ^>=1.1
+    , pretty        ^>=1.1.3
     , transformers
 
   hs-source-dirs:   app
