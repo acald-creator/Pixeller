@@ -5,6 +5,7 @@ import Syntax
 import Data.Functor
 import Data.Maybe
 
+---------------------------------------------------------
 isNum :: Expr -> Bool
 isNum Zero = True
 isNum (Succ t) = isNum t
@@ -43,3 +44,4 @@ eval t =
     nft
       | isVal nft -> Just nft
       | otherwise -> Nothing -- term is "stuck"
+---------------------------------------------------------
