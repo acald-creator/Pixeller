@@ -1,6 +1,8 @@
-module Pretty where
+module Pretty (ppexpr) where
 
 ----------------------------------------------------------------
+import Syntax
+
 import Text.PrettyPrint
 
 ----------------------------------------------------------------
