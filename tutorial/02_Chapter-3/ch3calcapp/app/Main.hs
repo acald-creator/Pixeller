@@ -1,3 +1,4 @@
+{-@ LIQUID "--no-termination" @-}
 module Main where
 
 import Eval
