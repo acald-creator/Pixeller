@@ -2,6 +2,11 @@ module Eval where
 
 import Syntax
 
+import Control.Monad.State
+import Control.Monad.Writer
+
+import qualified Data.Map as Map
+
 ---------------------------------------------------------------------------------
 data Value
   = VInt Integer
