@@ -65,7 +65,7 @@ ifthen = do
   tr <- expr
   reserved "else"
   fl <- expr
-  return (If cond tr fl)
+  If cond tr <$> expr
 
 ------------------------------------------------------------------------------
 --- Constants
