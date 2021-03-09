@@ -1,4 +1,6 @@
-module Pretty (ppexpr) where
+module Pretty
+  ( ppexpr
+  ) where
 
 ----------------------------------------------------------------
 import Syntax
@@ -22,6 +24,13 @@ viewVars _ = []
 viewBody :: Expr -> Expr
 viewBody (Lam _ a) = viewBody a
 viewBody x = x
+
+viewApp :: Expr -> (Expr, [Expr])
+viewApp (App e1 e2) = go e1 [e2]
+  where
+    go (App a b) xs = go a (b : xs)
+    go f xs = (f, xs)
+viewApp _ = error "not application"
 
 ----------------------------------------------------------------
 --- Create a helper function for parenthesizing subexpressions
