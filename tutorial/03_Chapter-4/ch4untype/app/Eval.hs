@@ -56,3 +56,19 @@ eval env expr =
         y <- eval env b
         red b
         apply x y
+
+---------------------------------------------------------------------------------
+extend :: Scope -> String -> Value -> Scope
+extend env v t = Map.insert v t env
+
+apply :: Value -> Value -> Eval Value
+apply (VClosure n e clo) ex = do
+  eval (extend clo n ex) e
+apply _ _ = error "Tried to apply non-closure"
+
+emptyScope :: Scope
+emptyScope = Map.empty
+
+runEval :: Expr -> (Value, [Step])
+runEval x = evalState (runWriterT (eval emptyScope x)) (EvalState 0)
+---------------------------------------------------------------------------------
