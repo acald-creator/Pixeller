@@ -18,3 +18,15 @@ data EvalState =
     }
   deriving (Show)
 
+inc :: Eval a -> Eval a
+inc m = do
+  modify $ \s -> s {depth = (depth s) + 1}
+  out <- m
+  modify $ \s -> s {depth = (depth s) - 1}
+  return out
+
+red :: Expr -> Eval ()
+red x = do
+  d <- gets depth
+  tell [(d, x)]
+  return ()
