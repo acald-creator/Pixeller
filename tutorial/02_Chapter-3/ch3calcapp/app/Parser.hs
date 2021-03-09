@@ -83,3 +83,7 @@ contents p = do
   r <- p
   eof
   return r
+
+parseExpr :: String -> Either ParseError Expr
+parseExpr s = parse (contents expr) "<stdin>" s
+-----------------------------------------------------------------------------
