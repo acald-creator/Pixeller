@@ -30,3 +30,29 @@ red x = do
   d <- gets depth
   tell [(d, x)]
   return ()
+
+---------------------------------------------------------------------------------
+type Step = (Int, Expr)
+
+type Eval a = WriterT [Step] (State EvalState) a
+
+type Scope = Map.Map String Value
+
+eval :: Eval.Scope -> Expr -> Eval Value
+eval env expr =
+  case expr of
+    Lit (LInt x) -> do
+      return $ VInt (fromIntegral x)
+    Lit (LBool x) -> do
+      return $ VBool x
+    Var x -> do
+      red expr
+      return $ env Map.! x
+    Lam x body -> inc $ do return (VClosure x body env)
+    App a b ->
+      inc $ do
+        x <- eval env a
+        red a
+        y <- eval env b
+        red b
+        apply x y
