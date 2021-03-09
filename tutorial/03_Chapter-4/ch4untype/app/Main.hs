@@ -7,7 +7,7 @@ import Syntax
 
 import Control.Monad
 import Control.Monad.Trans
-import System.Console.Haskelline
+import System.Console.Haskeline
 
 ---------------------------------------------------------------------------------
 showStep :: (Int, Expr) -> IO ()
