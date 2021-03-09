@@ -1,5 +1,7 @@
 {-@ LIQUID "--no-termination" @-}
-module Parser where
+module Parser
+  ( parseExpr
+  ) where
 
 import Syntax
 
