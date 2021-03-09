@@ -13,7 +13,7 @@ data Expr a where
 eval :: Expr a -> a
 eval (Lift v) = v
 eval (Tup e1 e2) = (eval e1, eval e2)
-eval (Lam f) = \x -> eval (f (Lift x))
+eval (Lam f) = eval . f . Lift
 eval (App e1 e2) = (eval e1) (eval e2)
 eval (Fix f) = (eval f) (eval (Fix f))
 
