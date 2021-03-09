@@ -22,13 +22,22 @@ maintainer:         antonette.caldwell@outlook.com
 extra-source-files: CHANGELOG.md
 
 executable c5calctyped
-    main-is:          Main.hs
+  main-is:          Main.hs
 
-    -- Modules included in this executable, other than Main.
-    -- other-modules:
+  -- Modules included in this executable, other than Main.
+  other-modules:
+    Check
+    Eval
+    Parser
+    Syntax
+    Type
 
-    -- LANGUAGE extensions used by modules in this package.
-    -- other-extensions:
-    build-depends:    base ^>=4.13.0.0
-    hs-source-dirs:   app
-    default-language: Haskell2010
+  -- LANGUAGE extensions used by modules in this package.
+  other-extensions: GADTs
+  build-depends:
+    , base    ^>=4.13.0.0
+    , parsec  ^>=3.1
+    , pretty  ^>=1.1
+
+  hs-source-dirs:   app
+  default-language: Haskell2010
