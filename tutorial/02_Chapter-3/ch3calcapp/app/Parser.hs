@@ -90,6 +90,9 @@ contents p = do
   eof
   return r
 
+toplevel :: Parser [Expr]
+toplevel = semiSep expr
+
 parseExpr :: String -> Either ParseError Expr
 parseExpr s = parse (contents expr) "<stdin>" s
 -----------------------------------------------------------------------------
