@@ -1,5 +1,6 @@
 module Syntax where
 
+---------------------------------------------------------
 data Expr
   = Tr
   | Fl
@@ -9,3 +10,4 @@ data Expr
   | Pred Expr
   | If Expr Expr Expr
   deriving (Eq, Show)
+---------------------------------------------------------
