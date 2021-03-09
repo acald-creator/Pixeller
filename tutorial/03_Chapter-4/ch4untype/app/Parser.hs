@@ -42,3 +42,37 @@ contents p = do
   r <- p
   eof
   return r
+
+natural :: Parser Integer
+natural = Tok.natural lexer
+
+variable :: Parser Expr
+variable = do
+  x <- identifier
+  return (Var x)
+
+number :: Parser Expr
+number = do
+  n <- natural
+  return (Lit (LInt (fromIntegral n)))
+
+lambda :: Parser Expr
+lambda = do
+  reservedOp "\\"
+  args <- many1 identifier
+  reservedOp "."
+  body <- expr
+  return $ foldr Lam body args
+
+term :: Parser Expr
+term = parens expr <|> variable <|> number <|> lambda
+
+expr :: Parser Expr
+expr = do
+  es <- many1 term
+  return (foldl1 App es)
+
+---------------------------------------------------------------------------------
+parseExpr :: String -> Either ParseError Expr
+parseExpr input = parse (contents expr) "<stdin>" input
+---------------------------------------------------------------------------------
