@@ -31,13 +31,16 @@ executable c5calctyped
     Parser
     Syntax
     Type
+    Pretty
 
   -- LANGUAGE extensions used by modules in this package.
   other-extensions: GADTs
   build-depends:
-    , base    ^>=4.13.0.0
-    , parsec  ^>=3.1
-    , pretty  ^>=1.1
+    , base       ^>=4.13.0.0
+    , haskeline  >=0.7
+    , mtl
+    , parsec     ^>=3.1
+    , pretty     ^>=1.1
 
   hs-source-dirs:   app
   default-language: Haskell2010
