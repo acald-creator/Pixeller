@@ -1,4 +1,4 @@
-module Parser where
+module Parser (parseExpr) where
 
 import Data.Char
 import Text.Parsec
