@@ -13,6 +13,7 @@ import qualified Text.Parsec.Expr as Ex
 import qualified Text.Parsec.Token as Tok
 
 import Data.Functor.Identity
+
 ---------------------------------------------------------------------------------
 langDef :: Tok.LanguageDef ()
 langDef =
