@@ -3,6 +3,10 @@ module Main where
 import Eval
 import Parser
 
+import Control.Monad.Trans
+import System.Console.Haskeline
+
+---------------------------------------------------------
 process :: String -> IO ()
 process line = do
   let res = parseExpr line
@@ -18,3 +22,4 @@ main = runInputT defaultSettings loop
       case minput of
         Nothing -> outputStrLn "Goodbye."
         Just input -> (liftIO $ process input) >> loop
+---------------------------------------------------------
