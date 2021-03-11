@@ -43,7 +43,7 @@ eval env expr =
     Op op a b -> do
       VInt a' <- eval env a
       VInt b' <- eval env b
-      return $(bintop op) a' b'
+      return $ (binop op) a' b'
     Lam x body -> return (VClosure x body env)
     App fun arg -> do
       VClosure x body clo <- eval env fun
