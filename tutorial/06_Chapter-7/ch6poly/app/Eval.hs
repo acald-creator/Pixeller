@@ -5,21 +5,27 @@ import Syntax
 import Control.Monad.Identity
 import qualified Data.Map as Map
 
----------------------------------------------------------
+----------------------------------------------------------------------
+type TermEnv = Map.Map String Value
+
+type Interpreter t = Identity t
+
+----------------------------------------------------------------------
 data Value
   = VInt Integer
   | VBool Bool
-  | VClosure String Expr (Eval.Scope)
+  | VClosure String Expr TermEnv
 
+emtpyTmenv :: TermEnv
+emtpyTmenv = Map.empty
+
+----------------------------------------------------------------------
 instance Show Value where
   show (VInt x) = show x
   show (VBool x) = show x
   show VClosure {} = "<<closure>>"
 
-type Evaluate t = Identity t
-
-type Scope = Map.Map String Value
-
+----------------------------------------------------------------------
 eval :: Eval.Scope -> Expr -> Identity Value
 eval env expr =
   case expr of
@@ -32,16 +38,6 @@ eval env expr =
       y <- eval env b
       apply x y
 
-extend :: Scope -> String -> Value -> Scope
-extend env v t = Map.insert v t env
-
-apply :: Value -> Value -> Evaluate Value
-apply (VClosure v t0 e) t1 = eval (extend e v t1) t0
-apply _ _ = error "Tried to apply closure"
-
-emptyScope :: Scope
-emptyScope = Map.empty
-
 runEval :: Expr -> Value
 runEval x = runIdentity (eval emptyScope x)
----------------------------------------------------------
+----------------------------------------------------------------------
