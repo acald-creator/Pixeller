@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Parser where
 
 -------------------------------------------------------------------------------
@@ -5,7 +7,7 @@ import Lexer
 import Syntax
 
 import Text.Parsec
-import Text.Parsec.String
+import Text.Parsec.Text.Lazy (Parser)
 
 import qualified Data.Text.Lazy as L
 import qualified Text.Parsec.Expr as Ex
@@ -24,7 +26,7 @@ variable = do
 
 number :: Parser Expr
 number = do
-  n <- natural
+  n <- integer
   return (Lit (LInt (fromIntegral n)))
 
 bool :: Parser Expr
