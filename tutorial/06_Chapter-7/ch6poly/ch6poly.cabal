@@ -37,7 +37,7 @@ executable ch6poly
   -- other-extensions:
   build-depends:
     , base          ^>=4.13.0.0
-    , containers    ^>=0.6
+    , containers    ^>=0.6.2
     , mtl           ^>=2.2
     , parsec        ^>=3.1
     , pretty        ^>=1.1
