@@ -1,5 +1,5 @@
 {-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE TypeSynonymInstances #-}
+-- {-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
 module Infer where
@@ -23,7 +23,7 @@ newtype TypeEnv =
   TypeEnv (Map.Map Var Scheme)
   deriving (Monoid)
 
-data Unique =
+newtype Unique =
   Unique
     { count :: Int
     }
