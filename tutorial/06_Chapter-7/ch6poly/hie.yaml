@@ -1,0 +1,22 @@
+cradle:
+  cabal:
+    - path: "app/Main.hs"
+      component: "ch6poly:exe:ch6poly"
+
+    - path: "app/Eval.hs"
+      component: "ch6poly:exe:ch6poly"
+
+    - path: "app/Infer.hs"
+      component: "ch6poly:exe:ch6poly"
+
+    - path: "app/Lexer.hs"
+      component: "ch6poly:exe:ch6poly"
+
+    - path: "app/Parser.hs"
+      component: "ch6poly:exe:ch6poly"
+
+    - path: "app/Syntax.hs"
+      component: "ch6poly:exe:ch6poly"
+
+    - path: "app/Type.hs"
+      component: "ch6poly:exe:ch6poly"
