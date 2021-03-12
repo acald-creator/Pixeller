@@ -1,9 +1,9 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TypeSynonymInstances #-}
+-- {-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+-- {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
 module Main where
 
@@ -110,7 +110,7 @@ typeof args = do
 
 -- :quit command
 quit :: a -> Repl ()
-quit _ = liftIO $ exitSuccess
+quit _ = liftIO exitSuccess
 
 -------------------------------------------------------------------------------
 -- Tab completion
