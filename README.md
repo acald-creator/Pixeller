@@ -1,1 +1,2 @@
-# pixellang
+# Pixeller
+> Haskell implemented programming language
